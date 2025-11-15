@@ -14,11 +14,13 @@ class User(Base):
     longest_streak = Column(Integer, default=0)
     last_study_date = Column(DateTime, nullable=True)
     difficulty_level = Column(String, default="medium")
+    avatar = Column(String, default="🎓")  # ✨ NOUVEAU : Avatar par défaut
     created_at = Column(DateTime, default=datetime.utcnow)
     
     study_sessions = relationship("StudySession", back_populates="user")
     achievements = relationship("UserAchievement", back_populates="user")
 
+# Les autres modèles restent identiques
 class StudySession(Base):
     __tablename__ = "study_sessions"
     
@@ -40,7 +42,7 @@ class Achievement(Base):
     name = Column(String, unique=True)
     description = Column(String)
     icon = Column(String)
-    requirement_type = Column(String)  # points, streak, accuracy, etc.
+    requirement_type = Column(String)
     requirement_value = Column(Integer)
 
 class UserAchievement(Base):

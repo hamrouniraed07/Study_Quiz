@@ -106,13 +106,14 @@ function App() {
         />
       )}
 
-      {currentView === 'results' && quizData && (
-        <Results
-          user={user}
-          quizData={quizData}
-          onNavigate={navigateTo}
-        />
-      )}
+     {currentView === 'results' && quizData && (
+  <Results
+    user={user}
+    quizData={quizData}
+    onNavigate={navigateTo}
+    apiUrl={API_URL}  // ← Ajoutez cette ligne
+  />
+)}
 
       {currentView === 'leaderboard' && (
         <Leaderboard
